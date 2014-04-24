@@ -27,7 +27,6 @@
     self = [super initWithCoder:aDecoder];
     if (self) {
         // Custom initialization
-        // 초기화
         httpReq = [[AFHTTPRequestOperationManager alloc] init];
     }
     return self;
