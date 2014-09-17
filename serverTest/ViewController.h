@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "AFHTTPRequestOperationManager.h"
 
-@interface ViewController : UIViewController <UITableViewDataSource>
+@interface ViewController : UIViewController <UITableViewDataSource>        // tableView의 data 관리 주체임을 선언
 {
     AFHTTPRequestOperationManager *httpReq;
     

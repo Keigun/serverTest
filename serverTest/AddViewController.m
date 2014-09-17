@@ -15,6 +15,10 @@
 @implementation AddViewController
 
 
+#define URL         @"http://54.238.204.158:3333/v1/users"
+
+
+
 #pragma mark -
 #pragma mark init
 
@@ -22,7 +26,7 @@
 {
     self = [super initWithCoder:aDecoder];
     if (self) {
-        
+        httpReq = [[AFHTTPRequestOperationManager alloc] init];
     }
     
     return self;
@@ -34,7 +38,28 @@
 
 - (IBAction)addButtonDidPush:(id)sender
 {
+    NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
     
+    [dic setObject:textField1.text forKey:@"email"];
+    [dic setObject:textField2.text forKey:@"username"];
+//    [dic setObject:textField3.text forKey:@"age"];
+    [dic setObject:textField4.text forKey:@"gender"];
+    
+    [httpReq POST:URL parameters:dic success:^(AFHTTPRequestOperation *operation, id responseObject)
+    {
+        if(responseObject)
+        {
+            if ([responseObject[@"success"] intValue] > 0)
+            {
+                NSLog(@"success!!");
+                [self dismissViewControllerAnimated:YES completion:^{
+                }];
+            }
+        }
+    } failure:^(AFHTTPRequestOperation *operation, id responseObjects)
+    {
+        
+    }];
 }
 
 
